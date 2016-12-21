@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\begin{document}
+\section*{Diet Problem}
+Considere el problema de elegir alimentos, los cuales poseen ciertos requisitos nutricionales. Supongamos los siguientes tipos de cena que están disponibles para los siguientes precios por paquete:
+
+\begin{multicols}{2}
+
+\begin{center}\begin{tabular}{ccc}
+	BEEF & vacuno & \$3.19\\
+	CHK & pollo &\$2.59 \\
+	FISH & pescado &\$2.29\\
+	HAM & jamón & \$2.89\\
+	MCH & queso & \$1.89\\
+	MTL & budín carne & \$1.99\\
+	SPG & tallarines & \$1.99\\
+	TUR & pavo & \$2.49\\
+\end{tabular}\end{center}
+
+\begin{multicols}{2}
+\end{multicols}
+\begin{center}\begin{tabular}{ccccc}
+		&A &C &B1 &B2 \\
+	BEEF& 60\% &20\% &10\%&15\%\\
+	CHK & 8 \% &0 \% &20\%&20\%\\
+	FISH & 8\% &10\% &15\%&10\%\\
+	HAM & 40\% &40\% &35\%&10\%\\
+	MCH & 15\% &35\% &15\%&15\%\\
+	MTL & 70\% &30\% &15\%&15\%\\
+	SPG & 25\% &50\% &25\%&15\%\\
+	TUR & 60\% &20\% &15\%&10\%\\
+\end{tabular}\end{center}
+\end{multicols}
+El problema consiste en encontrar la combinación mínima de paquetes que reunan los requerimientos semanales - esto es, al menos 700\% por cada nutriente.\\\\Sea $X_{BEEF}$ el número de paquetes de vacuno que fueron seleccionados para la cena, entonces el costo total es:
+\begin{center}$total = 3.19X_{BEEF}+2.59X_{CHK}+2.29X_{FISH}+2.89X_{HAM}+1.89X_{MCH}+1.99X_{MTL}+1.99_{SPG}+2.49X_{TUR}$
+\end{center}
+El porcentaje necesario de vitamina A esta dado por una formula similar
+\begin{center}$\%Total_{vitamina A}=60X_{BEEF}+8X_{CHK}+8X_{FISH}+40X_{HAM}+15X_{MCH}+70X_{MTL}+25_{SPG}+60X_{TUR}$\end{center}
+Esta cantidad necesaria debe ser mayor o igual a 700\%. Existe una fórmula similar para cada tipo de vitamina.
+\newpage
+\section*{Revisión Bibliográfica}
+Pratiksha Saxena [1] realiza un estudio acerca de las tecnicas de programación lineal y no lineal en la resolución de dietas para animales. Establece que para problemas de optimización de costos en dietas es altamente ocupada la programación lineal. Luego del experimento Saxena concluye que la programación lineal entrega resultados mejores que la programación no-lineal (PNL) para la maximización de una variable, sin embargo, la PNL entrega mejores resultados cuando existen más variables representando el efecto simultáneo en conjunto.\\\\En general, este problema concentra mayor cantidad de investigaciones para las dietas animales, optimizando las capacidades fisicas en función de la dieta que recibe. 
+\newpage
+\section*{Modelo Matemático}
+El modelo matemático asociado a este problema consiste en minimizar el costo total en función de las necesitades minimas de vitaminas.\\\\
+Sea:
+\begin{itemize}
+\item $x_{food}$ = Cantidad de alimento para comer
+\item $c_{food}$ = Costo del alimento
+\item $V_{food}^{nut}$ = Cantidad de nutriente tipo \emph{nut} en la comida \emph{food} 
+\item $Max_{food}$ = Cantidad máxima de alimento tipo \emph{food}
+\item $Min_{food}$ = Cantidad minima de alimento tipo \emph{food}
+\item $Max_{nut}$ = Cantidad máxima de nutriente tipo \emph{nut}
+\item $Min_{nut}$ = Cantidad minima de nutriente tipo \emph{nut}
+\end{itemize}
+Minimizar: \begin{center}$\sum_{\forall food}c_{food}*x_{food}$\end{center}
+Sujeto a:
+\begin{center}$Min_{nut}\leq\sum_{\forall nut}\sum_{\forall (food}v_{food}^{nut}*x_{food})\leq Max_{nut}$\end{center}
+\begin{center}$Min_{food}\leq\sum_{\forall {food}}x_{food})\leq Max_{food}$\end{center}
+\begin{center}$\forall x_{food}\geq 0, \forall v_{food} \geq 0$\end{center}
+\begin{center}$0 \leq Min_{nut} \leq Max{nut}$\end{center}
+\begin{center}$0 \leq Min_{food} \leq Max{food}$\end{center}
+\end{document}
